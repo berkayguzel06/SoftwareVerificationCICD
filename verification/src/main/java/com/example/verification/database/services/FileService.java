@@ -33,13 +33,6 @@ public class FileService {
         File file = fileRepository.findById(id).orElse(null);
         return file;
     }
-    @Transactional(readOnly = true)
-    public List<File> findByUsernameAndRepositoryAndBranch(String username){
-        Iterable<File> fileIterable = fileRepository.findByUsername(username).orElse(null);
-        List<File> files = StreamSupport.stream(fileIterable.spliterator(), false)
-                                             .toList();
-        return files;
-    }
 
     @Transactional
     public File create(File file) {

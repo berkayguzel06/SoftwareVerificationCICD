@@ -27,13 +27,6 @@ public class FileController {
         this.fileService = fileService;
     }
 
-    // To get authenticated user files
-    @GetMapping(value = "/api/auth/file", produces = "application/json")
-    public ResponseEntity<List<File>> findFileByUsername(String username) {
-        List<File> files = fileService.findByUsernameAndRepositoryAndBranch(username);
-        return ResponseEntity.ok(files);
-    }
-
     @GetMapping(produces="application/json")
     public ResponseEntity<List<File>> findAllFiles(){
         List<File> files = fileService.getAllFiles();
