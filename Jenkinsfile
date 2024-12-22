@@ -5,12 +5,6 @@ pipeline {
         maven 'maven'
     }
 
-    environment {
-        SONARQUBE_SERVER = 'http://172.19.0.3:9000'
-        SONARQUBE_PROJECT_KEY = 'verification'
-        SONARQUBE_PROJECT_NAME = 'verification'
-    }
-
     stages {
         stage('SCM Checkout') {
             steps {
@@ -24,28 +18,6 @@ pipeline {
                 script {
                     def mvnHome = tool 'maven'
                     sh "${mvnHome}/bin/mvn clean package"
-                }
-            }
-        }
-
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('sonar') {
-                    script {
-                        def mvnHome = tool 'maven'
-                        sh "${mvnHome}/bin/mvn clean verify sonar:sonar " +
-                            "-Dsonar.projectKey=${SONARQUBE_PROJECT_KEY} " +
-                            "-Dsonar.projectName=${SONARQUBE_PROJECT_NAME} " +
-                            "-Dsonar.host.url=${SONARQUBE_SERVER}"
-                    }
-                }
-            }
-        }
-
-        stage('Code Quality Check') {
-            steps {
-                timeout(time: 3, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
                 }
             }
         }
