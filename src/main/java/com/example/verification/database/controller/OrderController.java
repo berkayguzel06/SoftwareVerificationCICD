@@ -8,23 +8,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.verification.database.model.User;
-import com.example.verification.database.services.UserService;
+import com.example.verification.database.model.Order;
+import com.example.verification.database.services.OrderService;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
-
+@RequestMapping("/orders")
+public class OrderController {
     @Autowired
-    private UserService userService;
+    private OrderService orderService;
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userService.getUser(id);
+    public Order getOrder(@PathVariable Long id) {
+        return orderService.getOrder(id);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public Order createOrder(@RequestBody Order order) {
+        return orderService.createOrder(order);
     }
 }

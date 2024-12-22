@@ -19,11 +19,11 @@ pipeline {
             }
         }
 
-        stage('Clean Build') {
+        stage('Build') {
             steps {
                 script {
                     def mvnHome = tool 'maven'
-                    sh "${mvnHome}/bin/mvn clean install -DskipTests"
+                    sh "${mvnHome}/bin/mvn clean package"
                 }
             }
         }

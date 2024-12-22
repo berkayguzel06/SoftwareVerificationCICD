@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.verification.database.model.User;
-import com.example.verification.database.services.UserService;
+import com.example.verification.database.model.Product;
+import com.example.verification.database.services.ProductService;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/products")
+public class ProductController {
 
     @Autowired
-    private UserService userService;
+    private ProductService productService;
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userService.getUser(id);
+    public Product getProduct(@PathVariable Long id) {
+        return productService.getProduct(id);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
     }
 }

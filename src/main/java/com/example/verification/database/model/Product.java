@@ -2,21 +2,20 @@ package com.example.verification.database.model;
 
 import java.time.LocalDateTime;
 
-public class User {
+public class Product {
+
     private Long id;
     private String name;
-    private String username;
-    private String email;
+    private double price;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public User() {}
+    public Product() {}
 
-    public User(String name, String username, String email) {
+    public Product(String name, double price) {
         this.name = name;
-        this.username = username;
-        this.email = email;
+        this.price = price;
     }
 
     public Long getId() {
@@ -27,12 +26,8 @@ public class User {
         return name;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getEmail() {
-        return email;
+    public double getPrice() {
+        return price;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -47,12 +42,8 @@ public class User {
         this.name = name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public void setId(Long id) {
