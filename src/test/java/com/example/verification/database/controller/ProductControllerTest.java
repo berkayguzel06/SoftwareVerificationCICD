@@ -32,7 +32,7 @@ public class ProductControllerTest {
     public void testGetProduct() throws Exception {
         Product mockProduct = new Product();
         mockProduct.setId(1L);
-        mockProduct.setName("Laptop");
+        mockProduct.setName("Laptops");
         mockProduct.setPrice(1500.0);
 
         when(productService.getProduct(1L)).thenReturn(mockProduct);
@@ -40,7 +40,7 @@ public class ProductControllerTest {
         mockMvc.perform(get("/products/{id}", 1L))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.name").value("Laptop"))
+                .andExpect(jsonPath("$.name").value("Laptops"))
                 .andExpect(jsonPath("$.price").value(1500.0));
     }
 }
