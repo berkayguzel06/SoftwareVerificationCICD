@@ -18,15 +18,6 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Build') {
-            steps {
-                script {
-                    def mvnHome = tool 'maven'
-                    sh "${mvnHome}/bin/mvn clean package"
-                }
-            }
-        }
         
         stage('Build') {
             steps {
