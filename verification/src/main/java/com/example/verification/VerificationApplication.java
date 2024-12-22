@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VerificationApplication {
 
 	public static void main(String[] args) {
+		// Test Application
 		SpringApplication.run(VerificationApplication.class, args);
 	}
 
