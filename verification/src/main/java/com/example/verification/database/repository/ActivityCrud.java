@@ -6,5 +6,5 @@ import com.example.verification.database.CrudRepository;
 import com.example.verification.database.model.Activity;
 
 public interface ActivityCrud extends CrudRepository<Activity, Integer> {
-    List<Activity> findByUsersId(Integer userId);
+    List<Activity> findByUserId(Integer userId);
 }

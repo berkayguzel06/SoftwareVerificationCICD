@@ -12,8 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -40,8 +40,9 @@ public class User {
     @JsonManagedReference
     private List<File> files;
 
-    @ManyToMany(mappedBy = "users")
-    private List<Activity> activities;
+    @OneToOne
+    @JsonManagedReference
+    private Activity activities;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -116,11 +117,11 @@ public class User {
         return email;
     }
 
-    public List<Activity> getActivities() {
+    public Activity getActivities() {
         return activities;
     }
 
-    public void setActivities(List<Activity> activities) {
+    public void setActivities(Activity activities) {
         this.activities = activities;
     }
 

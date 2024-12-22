@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -23,8 +22,7 @@ public class File {
     
     private String path;
     
-    @Lob
-    private byte[] content;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -47,7 +45,7 @@ public class File {
     @SuppressWarnings("unused")
     private File(){}
 
-    public File(String path, String sha, byte[] content) {
+    public File(String path, String content) {
         this.path = path;
         this.content = content;
     }
@@ -56,7 +54,11 @@ public class File {
         return id;
     }
 
-    public byte[] getContent() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getContent() {
         return content;
     }
 
@@ -72,7 +74,7 @@ public class File {
         this.user = user;
     }
 
-    public void setContent(byte[] content) {
+    public void setContent(String content) {
         this.content = content;
     }
 

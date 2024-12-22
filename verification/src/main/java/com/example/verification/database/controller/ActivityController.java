@@ -38,7 +38,7 @@ public class ActivityController {
         return ResponseEntity.ok(activity);
     }
 
-    @PostMapping(value="/api/auth", consumes="application/json", produces="application/json")
+    @PostMapping(consumes="application/json", produces="application/json")
     public ResponseEntity<Activity> createActivity(@RequestBody Activity activity) {
         Activity createdActivity = activityService.createActivity(activity);
         return ResponseEntity.ok(createdActivity);

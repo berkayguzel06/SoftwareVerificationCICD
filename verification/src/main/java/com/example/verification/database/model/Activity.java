@@ -2,17 +2,15 @@ package com.example.verification.database.model;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -30,13 +28,9 @@ public class Activity {
     private String organizator;
     private String title;
 
-    @ManyToMany
-    @JoinTable(
-        name = "activity_user",
-        joinColumns = @JoinColumn(name = "activity_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private Set<User> users = new HashSet<>();
+    @OneToOne
+    @JsonBackReference
+    private User user;
     
     private Date startDate;
     private Date finishDate;
@@ -57,9 +51,9 @@ public class Activity {
     @SuppressWarnings("unused")
     private Activity(){}
 
-    public Activity(String title, Set<User> users) {
+    public Activity(String title, User user) {
         this.title = title;
-        this.users = users;
+        this.user = user;
     }
 
     public Integer getId(){
@@ -110,12 +104,12 @@ public class Activity {
         this.finishDate = finishDate;
     }
 
-    public Set<User> getUser(){
-        return users;
+    public User getUser(){
+        return user;
     }
 
-    public void setUser(Set<User> users){
-        this.users = users;
+    public void setUser(User user){
+        this.user = user;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -29,7 +29,7 @@ public class ActivityService {
 
     @Transactional(readOnly = true)
     public List<Activity> findActivitiesByUserId(Integer id) {
-        List<Activity> activities = activityCrud.findByUsersId(id);
+        List<Activity> activities = activityCrud.findByUserId(id);
         return activities.stream().toList();
     }
 
