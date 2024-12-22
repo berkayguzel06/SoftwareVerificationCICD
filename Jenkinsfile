@@ -12,6 +12,15 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('Test') {
+            steps {
+                script {
+                    def mvnHome = tool 'maven'
+                    sh "${mvnHome}/bin/mvn clean test"
+                }
+            }
+        }
         
         stage('Build') {
             steps {
