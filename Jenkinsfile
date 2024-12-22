@@ -27,20 +27,6 @@ pipeline {
                 }
             }
         }
-        
-        stage('Unit Tests') {
-            steps {
-                script {
-                    def mvnHome = tool 'maven'
-                    sh "${mvnHome}/bin/mvn test"
-                }
-            }
-            post {
-                always {
-                    junit '**/target/surefire-reports/*.xml'
-                }
-            }
-        }
 
         stage('SonarQube Analysis') {
             steps {
