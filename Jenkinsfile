@@ -18,6 +18,15 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('Clean Build') {
+            steps {
+                script {
+                    def mvnHome = tool 'maven'
+                    sh "${mvnHome}/bin/mvn clean install -DskipTests"
+                }
+            }
+        }
         
         stage('Build') {
             steps {
