@@ -1,4 +1,0 @@
-mvn clean verify sonar:sonar -Dsonar.projectKey=ecolead-backend -Dsonar.projectName='ecolead-backend' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_36ebfafd542914756ae7e218d0872e6dda8e3076
-
-
-Analyze "ecolead-backend": sqp_36ebfafd542914756ae7e218d0872e6dda8e3076
