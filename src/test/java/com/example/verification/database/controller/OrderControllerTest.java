@@ -14,18 +14,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.example.verification.database.model.Order;
 import com.example.verification.database.services.OrderService;
 
-@WebMvcTest(OrderController.class)  // Correct controller reference
+@WebMvcTest(OrderController.class)
 public class OrderControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
-    @MockBean  // Use @MockBean to mock the OrderService
+    @MockBean
     private OrderService orderService;
 
     @BeforeEach
     void setup() {
-        // No need for manual MockMvc setup when using @WebMvcTest
+        
     }
 
     @Test
